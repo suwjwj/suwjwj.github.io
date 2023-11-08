@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Wechaty | Athons</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://suwjwj.github.io/favicon.ico?v=1699474233498">
+<link rel="stylesheet" href="https://suwjwj.github.io/styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="👏  欢迎使用 Wechaty ！
+✍️  Wechaty 一个iPad puppet好贵，但是貌似可以无限白嫖的微信机器人！... ...
+ヾ(≧ ▽ ≦)ゝ
+
+wechaty
+docker 激活代码
+docker run -it -d..." />
+    <meta name="keywords" content="Wechaty" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://suwjwj.github.io">
+        <img src="https://suwjwj.github.io/images/avatar.png?v=1699474233498" class="site-logo">
+        <h1 class="site-title">Athons</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://suwjwj.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Wechaty</h2>
+            <div class="post-date">2023-11-07</div>
+            
+              <div class="feature-container" style="background-image: url('https://suwjwj.github.io/post-images/wechaty.jpg')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>👏  欢迎使用 <strong>Wechaty</strong> ！<br>
+✍️  <strong>Wechaty</strong> 一个iPad puppet好贵，但是貌似可以无限白嫖的微信机器人！... ...<br>
+ヾ(≧ ▽ ≦)ゝ</p>
+<!-- more -->
+<h2 id="wechaty">wechaty</h2>
+<h3 id="docker-激活代码">docker 激活代码</h3>
+<p>docker run -it -d --name wechaty_test -e WECHATY_LOG=&quot;verbose&quot; -e WECHATY_PUPPET=&quot;wechaty-puppet-padlocal&quot; -e WECHATY_PUPPET_PADLOCAL_TOKEN=&quot;puppet_padlocal_2f59cc9c63a5453a93ccab61c471f908&quot; -e WECHATY_PUPPET_SERVER_PORT=&quot;8080&quot; -e WECHATY_TOKEN=&quot;1fe5f846-3cfb-401d-b20c-sailor==&quot; -p &quot;8080:8080&quot; wechaty/wechaty:0.65</p>
+<h3 id="docker-登录">docker 登录</h3>
+<pre><code>docker ps
+</code></pre>
+<p>查看docker id</p>
+<pre><code>docker logs [docker id3]
+</code></pre>
+<p>查看启动日志，如果前面都没有问题的话，会显示一个url地址，在浏览器中打开此地址会显示一个二维码，使用你准备当机器人的微信号扫码登陆，此部分完成</p>
+<h3 id="安装python-wechaty">安装python-wechaty</h3>
+<p>docker环境搭建好之后，shell中安装python-wechaty</p>
+<pre><code>  pip install wechaty~=0.8
+</code></pre>
+<p>注意上面虽然只安装了一个包，但是相关依赖比较多，建议使用国内源进行安装</p>
+<h3 id="如何查看docker运行的主机地址">如何查看docker运行的主机地址</h3>
+<ol>
+<li>
+<p><strong>查看宿主机的 IP 地址</strong>： Docker 容器通常与宿主机共享网络，所以你可以查看宿主机的 IP 地址。在 Ubuntu 上，你可以使用 <code>ip</code> 命令来查看：</p>
+<pre><code>bashCopy code
+ip addr show
+</code></pre>
+<p>你会看到多个网络接口的列表。对于大多数用户，<code>eth0</code> 或 <code>ens33</code>（取决于你的网络配置）是主要的网络接口。查找该接口下的 <code>inet</code> 行，你会看到宿主机的 IP 地址。</p>
+</li>
+<li>
+<p><strong>查看 Docker 容器的网络信息</strong>： 使用 <code>docker inspect</code> 命令，你可以查看特定容器的详细信息，包括其网络配置：</p>
+<pre><code>bashCopy code
+docker inspect &lt;container_id_or_name&gt;
+</code></pre>
+<p>在输出的 JSON 中，导航到 <code>NetworkSettings</code> 部分。在这里，你可以看到容器的 IP 地址、网关（通常是宿主机的 IP 地址）以及其他网络相关的信息。</p>
+</li>
+<li>
+<p><strong>使用特定的 Docker 网络命令</strong>： Docker 提供了一个命令来查看网络相关的信息：</p>
+<pre><code>bashCopy code
+docker network ls
+</code></pre>
+<p>这将列出所有 Docker 网络。你可以进一步查看特定网络的详细信息：</p>
+<pre><code>bashCopy code
+docker network inspect &lt;network_name_or_id&gt;
+</code></pre>
+<p>在输出中，你可以看到与该网络关联的所有容器以及它们的 IP 地址。</p>
+</li>
+</ol>
+<p>请注意，Docker 容器的 IP 地址是 Docker 内部网络的一部分，可能与宿主机的 IP 地址不同。如果你想从外部访问 Docker 容器，你通常会使用宿主机的 IP 地址和映射到容器的端口。</p>
+<h3 id="ubuntu-py文本编译器">Ubuntu py文本编译器</h3>
+<p>在 Ubuntu 上创建并编写一个 Python 文件的步骤如下：</p>
+<ol>
+<li>
+<p><strong>打开终端</strong>：</p>
+<ul>
+<li>你可以通过按下 <code>Ctrl</code> + <code>Alt</code> + <code>T</code> 快捷键或从应用菜单中选择“终端”来打开终端。</li>
+</ul>
+</li>
+<li>
+<p><strong>导航到你想要创建 Python 文件的目录</strong>：</p>
+<ul>
+<li>
+<p>使用</p>
+<pre><code>cd
+</code></pre>
+<p>命令来切换目录。例如，如果你想在桌面上创建一个 Python 文件，你可以输入：</p>
+<pre><code>bashCopy code
+cd ~/桌面
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>使用文本编辑器创建 Python 文件</strong>：</p>
+<ul>
+<li>
+<p>你可以使用 Ubuntu 默认的</p>
+<pre><code>nano
+</code></pre>
+<p>文本编辑器或其他你喜欢的文本编辑器。例如，要使用</p>
+<pre><code>nano
+</code></pre>
+<p>创建一个名为</p>
+<pre><code>my_program.py
+</code></pre>
+<p>的文件，你可以输入：</p>
+<pre><code>nano my_program.py
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>编写 Python 程序</strong>：</p>
+<ul>
+<li>
+<p>在打开的文本编辑器中，你可以开始编写你的 Python 程序。例如：</p>
+<pre><code>print(&quot;Hello, World!&quot;)
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>保存并退出文本编辑器</strong>：</p>
+<ul>
+<li>如果你使用的是 <code>nano</code>，可以按下 <code>Ctrl</code> + <code>O</code> 来保存文件，然后按下 <code>Ctrl</code> + <code>X</code> 退出编辑器。</li>
+</ul>
+</li>
+<li>
+<p><strong>运行 Python 程序</strong>：</p>
+<ul>
+<li>
+<p>在终端中，输入以下命令来运行你的 Python 程序：</p>
+<pre><code>python3 my_program.py
+</code></pre>
+</li>
+<li>
+<p>你应该会看到输出 <code>Hello, World!</code>。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="wechaty演示代码">wechaty演示代码</h3>
+<pre><code>from wechaty import Wechaty, Message
+import asyncio, os, time
+
+# 填入的还是你前面申请的token
+os.environ[&quot;WECHATY_PUPPET_SERVICE_TOKEN&quot;] = &quot;puppet_padlocal_d5ef4968b6e54cc3bca235662f00c13a&quot;
+# docker运行的主机地址+端口
+os.environ[&quot;WECHATY_PUPPET_SERVICE_ENDPOINT&quot;] = &quot;172.17.0.1:8080&quot;
+
+bot = Wechaty()
+
+class MyBot(Wechaty):
+    async def on_message(self, msg: Message) -&gt; None:
+        text = msg.text()
+        if text == &quot;ding&quot;:
+            res = &quot;dong&quot;
+            await msg.say(res)
+
+asyncio.run(MyBot().start())
+
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://suwjwj.github.io/tag/K0N-UwQrg/" class="tag">
+                    Wechaty
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://suwjwj.github.io/post/hello-gridea/">
+                  <h3 class="post-title">
+                    Hello Gridea
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>
